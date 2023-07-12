@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.RedirectView;
 public class CustomerRestController {
     private final CustomerService customerService;
 
-    public static final String REDIRECT_TO_ALL = "customers";
+    public static final String REDIRECT_TO_ALL = "/customers";
 
     @GetMapping("/{id}")
     public CustomerDto getCustomer(@PathVariable Long id) {
@@ -42,13 +42,6 @@ public class CustomerRestController {
 
     @PostMapping
     public RedirectView addCustomer(@RequestBody CustomerDto customerDto) {
-        customerService.addCustomer(customerDto);
-        return new RedirectView(REDIRECT_TO_ALL);
-    }
-
-    @PutMapping("/{id}")
-    public RedirectView updateCustomer(@PathVariable Long id, @RequestBody CustomerDto customerDto) {
-        customerDto.setId(id);
         customerService.addCustomer(customerDto);
         return new RedirectView(REDIRECT_TO_ALL);
     }
